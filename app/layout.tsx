@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Cinzel, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const displayFont = Cormorant_Garamond({
+const displayFont = Cinzel({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -17,29 +17,32 @@ const bodyFont = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#16100c",
+  themeColor: "#110d08",
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.draizabellarenno.com"),
-  title: "Dra. Izabella Rennó | Advocacia & Consultoria Jurídica em Itajubá - MG",
+  metadataBase: new URL("https://www.jeancesaradvogado.com.br"),
+  title: "Jean César Advogado & Associados | Direito Imobiliário & Civil em Mateus Leme - MG",
   description:
-    "Advocacia estratégica, rigor técnico e atendimento dedicado conduzido pela Dra. Izabella Rennó (OAB/MG 201.285). Formação HarvardX em Direito Contratual, Cível, Consumidor, Bancário, Família e Trabalhista. Atendimento presencial no Ed. Santa Clara em Itajubá e on-line em todo o Brasil.",
+    "Advocacia estratégica e proteção patrimonial conduzida pelo Dr. Jean César (OAB/MG 213.482), Presidente da Comissão de Direito Imobiliário da 145ª Subseção da OAB/MG. Especialista em Direito Imobiliário, Regularização de Imóveis, Contratos, Direito Civil, Família e Sucessões. Atendimento presencial em Mateus Leme - MG e on-line em todo o Brasil.",
   keywords: [
-    "Dra. Izabella Rennó",
-    "Izabella Rennó Advocacia",
-    "advogada em Itajubá",
-    "Edifício Santa Clara Itajubá",
-    "OAB MG 201285",
-    "direito civil Itajubá",
-    "contratos HarvardX",
-    "direito bancário e consumidor",
-    "direito de família e sucessões",
-    "advocacia especializada Minas Gerais",
+    "Jean César Advogado",
+    "Jean César Advogado & Associados",
+    "Dr. Jean César Rodrigues dos Santos",
+    "advogado em Mateus Leme",
+    "advogado Mateus Leme MG",
+    "OAB MG 213482",
+    "Direito Imobiliário Mateus Leme",
+    "Comissão de Direito Imobiliário OAB",
+    "regularização de imóveis e lotes",
+    "regularização fundiária Serra Azul Mateus Leme",
+    "direito civil e contratos",
+    "inventário e sucessões",
+    "assessoria jurídica empresarial",
   ],
-  authors: [{ name: "Dra. Izabella Rennó Del-Ducca de Souza" }],
-  creator: "Izabella Rennó Advocacia",
-  publisher: "Izabella Rennó Advocacia",
+  authors: [{ name: "Dr. Jean César Rodrigues dos Santos" }],
+  creator: "Jean César Advogado & Associados",
+  publisher: "Jean César Advogado & Associados",
   formatDetection: {
     telephone: true,
     address: true,
@@ -51,17 +54,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://www.draizabellarenno.com",
-    title: "Dra. Izabella Rennó | Advocacia de Alta Precisão em Itajubá - MG",
+    url: "https://www.jeancesaradvogado.com.br",
+    title: "Jean César Advogado & Associados | Segurança Jurídica & Proteção Patrimonial",
     description:
-      "Advocacia estratégica com dedicação exclusiva a cada causa. Atendimento presencial em Itajubá - MG e on-line para todo o Brasil.",
-    siteName: "Izabella Rennó Advocacia",
+      "Atuação jurídica de excelência, transparência e liderança em Direito Imobiliário e Civil. Escritório no Centro de Mateus Leme - MG.",
+    siteName: "Jean César Advogado & Associados",
     images: [
       {
         url: "/logo.png",
-        width: 1200,
-        height: 410,
-        alt: "Izabella Rennó Advocacia",
+        width: 1024,
+        height: 341,
+        alt: "Jean César Advogado & Associados",
       },
     ],
   },
@@ -83,3 +86,4 @@ export default function RootLayout({
     </html>
   );
 }
+

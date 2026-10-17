@@ -13,6 +13,7 @@ import {
   ArrowUpRight,
   Award,
   Briefcase,
+  Building2,
   CheckCircle2,
   Clock,
   HeartHandshake,
@@ -22,25 +23,56 @@ import {
   Menu,
   Phone,
   Scale,
+  Shield,
+  ShieldCheck,
   Star,
   X,
 } from "lucide-react";
 import GlowingButton from "./components/GlowingButton";
 
-const WHATSAPP_NUMBER = "5535997405607";
-const PHONE_DISPLAY = "(35) 99740-5607";
-const EMAIL_CONTACT = "contato@draizabellarenno.com";
+const WHATSAPP_NUMBER = "5531988035079";
+const PHONE_DISPLAY = "(31) 98803-5079";
+const EMAIL_CONTACT = "contato@jeancesaradvogado.com.br";
+const INSTAGRAM_URL = "https://www.instagram.com/jeancesar.adv?igsh=MTBwNno1eWk5MDR5MA==";
+const INSTAGRAM_HANDLE = "@jeancesar.adv";
+const ADDRESS_FULL = "R. Pereira Guimarães, 180 - 1° ANDAR - Centro, Mateus Leme - MG, 35670-000, Brasil";
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/search?q=Jean+C%C3%A9sar+Advogado+%26+Associados%0AMateus+Leme+%C2%B7+MG";
 
 function getWhatsAppUrl(message?: string) {
   const defaultText =
-    "Olá, Dra. Izabella Rennó. Gostaria de solicitar uma consulta jurídica especializada.";
+    "Olá, Dr. Jean César. Gostaria de solicitar uma consulta jurídica especializada.";
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     message || defaultText
   )}`;
 }
 
-const GOOGLE_MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Dra.+Izabella+Renn%C3%B3+Del-Ducca+de+Souza%2C+Edif%C3%ADcio+Santa+Clara%2C+R.+Cel.+Francisco+Braz%2C+185+-+Sl+205+-+Centro%2C+Itajub%C3%A1+-+MG%2C+37500-005";
+function InstagramIcon({
+  size = 17,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
 
 function WhatsAppIcon({
   size = 17,
@@ -64,11 +96,11 @@ function WhatsAppIcon({
 }
 
 const reveal: Variants = {
-  hidden: { opacity: 0, y: 26 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -80,7 +112,7 @@ const stagger: Variants = {
 interface PracticeArea {
   id: string;
   title: string;
-  icon: typeof Scale;
+  icon: typeof Building2;
   tag: string;
   summary: string;
   details: string;
@@ -90,143 +122,191 @@ interface PracticeArea {
 
 const practiceAreas: PracticeArea[] = [
   {
-    id: "civel-contratos",
-    title: "Direito Cível & Contratos",
-    icon: Scale,
-    tag: "Padrão HarvardX",
+    id: "direito-imobiliario",
+    title: "Direito Imobiliário & Regularização",
+    icon: Building2,
+    tag: "Liderança Institucional OAB/MG",
     summary:
-      "Assessoria estratégica em contratos com padrão internacional, auditoria de riscos, responsabilidade civil e litígios patrimoniais.",
+      "Regularização de lotes, áreas rurais e urbanas, usucapião judicial e extrajudicial, auditoria registral e segurança patrimonial.",
     details:
-      "Com formação especializada e certificada pela Harvard Law School (HarvardX em Contract Law), a Dra. Izabella Rennó atua na elaboração e revisão minuciosa de contratos civis e comerciais de alta relevância. A atuação abrange também o cancelamento e anulação de doações por ingratidão (Artigo 555 do Código Civil), rescisões contratuais, reparações por danos morais e materiais e disputas patrimoniais complexas.",
+      "Sob a liderança direta do Dr. Jean César, Presidente da Comissão de Direito Imobiliário da 145ª Subseção da OAB/MG, atuamos com autoridade e combatividade na solução de impasses fundiários em Mateus Leme, Serra Azul e região. Conduzimos processos ágeis de usucapião em cartório, regularização de loteamentos, adjudicação compulsória, contratos de compra e venda e proteção possessória de propriedades rurais e urbanas.",
     topics: [
-      "Auditoria preventiva & elaboração de contratos (HarvardX)",
-      "Anulação e revogação de doações por ingratidão",
-      "Responsabilidade civil e reparação por danos",
-      "Execução de títulos e disputas patrimoniais",
+      "Regularização de áreas rurais e sítios (Serra Azul e região)",
+      "Documentação e desmembramento de lotes urbanos",
+      "Usucapião extrajudicial célere em cartório e judicial",
+      "Elaboração e auditoria prévia de contratos imobiliários",
+      "Ações possessórias, reintegração de posse e demarcação",
     ],
     whatsAppText:
-      "Olá, Dra. Izabella Rennó. Gostaria de uma consulta especializada em Direito Cível e Contratos.",
+      "Olá, Dr. Jean César. Gostaria de uma consulta sobre Direito Imobiliário e Regularização de Imóveis.",
   },
   {
-    id: "consumidor-bancario",
-    title: "Direito do Consumidor & Bancário",
-    icon: Landmark,
-    tag: "Defesa Intransigente",
+    id: "civil-contratos",
+    title: "Direito Civil & Contratos Patrimoniais",
+    icon: Scale,
+    tag: "Firmeza & Blindagem",
     summary:
-      "Combate incisivo a abusos de instituições financeiras, juros abusivos, fraudes, negativações indevidas e violações de tempo.",
+      "Estruturação de contratos de alta precisão, blindagem patrimonial, cobranças estratégicas e reparações por perdas e danos.",
     details:
-      "Proteção rigorosa contra práticas abusivas de bancos e fornecedores. Atuação especializada em fraudes bancárias, empréstimos consignados não solicitados, cobrança de juros extorsivos, negativações indevidas no SPC/Serasa e ressarcimento pelo desvio produtivo do consumidor — incluindo indenizações por tempo excessivo e prejudicial em filas de agências bancárias.",
+      "Atuação minuciosa e estratégica em litígios e prevenção cível. Elaboramos e revisamos instrumentos contratuais comerciais e civis com auditoria prévia de riscos. Atuamos com firmeza em reparações de danos morais e materiais, rescisões contratuais por inadimplemento, execução de títulos de crédito e defesa dos direitos patrimoniais de pessoas físicas e jurídicas.",
     topics: [
-      "Fraudes financeiras e empréstimos fraudulentos",
-      "Revisão de juros e cláusulas bancárias abusivas",
-      "Tempo excessivo em fila de banco (desvio produtivo)",
-      "Indenizações por negativação indevida e cobrança vexatória",
+      "Elaboração e revisão criteriosa de contratos civis e comerciais",
+      "Ações de cobrança, execuções e recuperação de crédito",
+      "Responsabilidade civil e reparação por danos morais e materiais",
+      "Anulação e rescisão contratual com apuração de perdas",
+      "Notificações extrajudiciais e acordos preventivos",
     ],
     whatsAppText:
-      "Olá, Dra. Izabella Rennó. Gostaria de uma consulta especializada em Direito do Consumidor e Bancário.",
+      "Olá, Dr. Jean César. Gostaria de uma consulta sobre Direito Civil e Contratos.",
   },
   {
     id: "familia-sucessoes",
     title: "Família & Sucessões",
     icon: HeartHandshake,
-    tag: "Atendimento Humanizado",
+    tag: "Agilidade & Discrição",
     summary:
-      "Condução sensível, técnica e discreta em inventários, partilhas judiciais e extrajudiciais, divórcios e planejamento sucessório.",
+      "Inventários judiciais e extrajudiciais ágeis em cartório, partilha de bens rurais e urbanos, divórcios e planejamento sucessório.",
     details:
-      "As questões de família e sucessões exigem equilíbrio entre firmeza jurídica e sensibilidade humana. Atuação estruturada em inventários judiciais e extrajudiciais rápidos em cartório, planejamento sucessório para resguardo do patrimônio familiar, divórcios consensuais e litigiosos, partilha de bens, fixação e revisão de pensão alimentícia e guarda de menores.",
+      "Condução técnica, discreta e resolutiva nas questões mais sensíveis do patrimônio familiar. Atuamos com celeridade na realização de inventários em cartório ou judiciais, garantindo que a partilha de bens, propriedades rurais e lotes ocorra sem desgastes desnecessários. Oferecemos planejamento sucessório estratégico para proteger o legado e patrimônio construído pela família.",
     topics: [
-      "Inventários judiciais e extrajudiciais ágeis",
-      "Planejamento sucessório e proteção patrimonial",
-      "Divórcio consensual e litigioso com partilha",
-      "Pensão alimentícia, guarda e convivência",
+      "Inventários judiciais e extrajudiciais rápidos em cartório",
+      "Partilha de bens móveis, imóveis e propriedades rurais",
+      "Planejamento sucessório e proteção patrimonial da família",
+      "Divórcio consensual e litigioso com partilha justa",
+      "Pensão alimentícia, guarda e regulamentação de convivência",
     ],
     whatsAppText:
-      "Olá, Dra. Izabella Rennó. Gostaria de uma consulta especializada em Direito de Família e Sucessões.",
+      "Olá, Dr. Jean César. Gostaria de uma consulta sobre Inventário e Direito de Família.",
   },
   {
-    id: "trabalhista-previdenciario",
-    title: "Trabalhista & Previdenciário",
+    id: "empresarial-consumidor",
+    title: "Assessoria Empresarial & Defesa",
     icon: Briefcase,
-    tag: "Rigor & Direitos",
+    tag: "Resultados & Segurança",
     summary:
-      "Resguardo enfático de direitos trabalhistas, consultoria preventiva empresarial e concessão de benefícios e pensões do INSS.",
+      "Consultoria jurídica preventiva para empresas, prestadores de serviços, contratos comerciais e defesa contundente contra abusos.",
     details:
-      "Defesa dos direitos de profissionais e empresas nas relações de trabalho: rescisão indireta, verbas rescisórias inadimplidas, horas extraordinárias, equiparação salarial e compliance preventivo. No âmbito previdenciário, atuação detalhada para concessão de pensão por morte, aposentadorias especiais, auxílios e planejamento previdenciário minucioso.",
+      "Apoiamos empresas, empresários e prestadores de serviços na estruturação de operações sólidas e seguras. Atuamos na revisão de rotinas contratuais, compliance preventivo, negociações com fornecedores e defesa contra abusos bancários e juros extorsivos. Prestamos assessoria jurídica integral com foco na redução de passivos e proteção da atividade econômica.",
     topics: [
-      "Reclamatórias trabalhistas e rescisões contratuais",
-      "Concessão de pensão por morte e auxílios do INSS",
-      "Planejamento e revisão de aposentadorias",
-      "Consultoria jurídica preventiva e contratos de trabalho",
+      "Assessoria jurídica continuada para empresas e prestadores de serviços",
+      "Elaboração de contratos comerciais, prestação de serviços e parcerias",
+      "Defesa contra cobranças abusivas, juros extorsivos e fraudes financeiras",
+      "Cobrança jurídica extrajudicial e judicial de inadimplentes",
+      "Resolução ágil de disputas mercantis e societárias",
     ],
     whatsAppText:
-      "Olá, Dra. Izabella Rennó. Gostaria de uma consulta especializada em Direito Trabalhista e Previdenciário.",
+      "Olá, Dr. Jean César. Gostaria de uma consulta sobre Assessoria Empresarial e Defesa Jurídica.",
   },
 ];
 
 const clientReviews = [
   {
-    name: "Louise Bianca",
-    reviewsCount: "5 avaliações",
+    name: "Pedro Amaral",
+    badge: "Local Guide",
+    reviewsCount: "13 avaliações · 28 fotos",
     date: "Há 1 ano",
-    highlight: "Lê todo o processo com cuidado absoluto",
+    highlight: "Trabalho incrível em área rural em Serra Azul",
     content:
-      "Dra Izabella é extremamente dedicada ao que faz, uma das únicas - senão a única - que realmente lê todo o processo e escreve todas as suas manifestações com determinação, atenção e cuidado! Só tenho elogios ao escritório, ao atendimento e ao desempenho da Dra! Excepcional! 🙏🏻",
+      "Quero elogiar o trabalho incrível do Jean em resolver os problemas de uma área rural adquirida em Serra Azul, Mateus Leme-MG. Ele foi super atencioso, eficiente e mostrou um conhecimento enorme de direito imobiliário. Graças a ele, tudo foi resolvido de forma prática e tranquila. Um ótimo profissional!",
   },
   {
-    name: "Henrique Nunes",
-    reviewsCount: "1 avaliação",
-    date: "Há 3 anos",
-    highlight: "Atendimento diferenciado e segurança técnica",
+    name: "Aline Alves",
+    badge: "Cliente Verificada",
+    reviewsCount: "6 avaliações",
+    date: "Há 1 ano",
+    highlight: "Documentação de 2 lotes com muita eficiência",
     content:
-      "Atendimento diferenciado! Uma grande profissional que transmite confiança para o cliente, pois fala com segurança mostrando que entende do que fala. O investimento vale a pena. Serviço de qualidade e com seriedade! Recomendo!",
+      "Fui muito bem atendida pelo Escritório Jean César Advogado & Associados. O processo de documentação de 2 lotes foi conduzido com muita eficiência, profissionalismo e transparência. A equipe sempre esteve disponível para esclarecer dúvidas e conduzir com seriedade. Recomendo com certeza!",
   },
   {
-    name: "Valter Luiz Arruda",
-    reviewsCount: "4 avaliações",
-    date: "Há 9 meses",
-    highlight: "Séria, dedicada e objetivos alcançados",
+    name: "Servtecnicos",
+    badge: "Cliente Corporativo",
+    reviewsCount: "5 avaliações · 4 fotos",
+    date: "Há 1 ano",
+    highlight: "Empresa séria, profissionais capacitados e preço justo",
     content:
-      "Excelente profissional. Séria e dedicada. Foi muito bom tê-la como advogada. Objetivos alcançados.",
+      "Empresa séria e com profissionais altamente capacitados, ofereceram um serviço extremamente profissional e com preço justo. Para nós foi muito cômodo poder contar com a assessoria do Jean, com certeza é o tipo de serviço que vale a pena ser contratado. Nós indicamos com certeza.",
   },
   {
-    name: "Caique Oliveira",
+    name: "Edireno Lopes Santos",
+    badge: "Cliente Verificado",
+    reviewsCount: "2 avaliações",
+    date: "Há 2 meses",
+    highlight: "Excelente atendimento e domínio do escopo",
+    content:
+      "Excelente atendimento, com conhecimento e domínio do escopo proposto. Profissional com domínio absoluto das diretrizes técnicas e operacionais da área jurídica.",
+  },
+  {
+    name: "Jacques Zac",
+    badge: "Cliente Verificado",
+    reviewsCount: "13 avaliações",
+    date: "Há 11 meses",
+    highlight: "Profissional competente, correto e pontual",
+    content:
+      "Um profissional muito competente e correto, cumpridor dos horários. Contrataria ele novamente se for preciso. Totalmente recomendável!",
+  },
+  {
+    name: "Dalmo Oliveira",
+    badge: "Cliente Verificado",
     reviewsCount: "3 avaliações",
-    date: "Há 2 anos",
-    highlight: "Conhecimento incrível e muita cordialidade",
+    date: "Há 8 meses",
+    highlight: "Comprometido com as demandas e de muita confiança",
     content:
-      "Dra Izabella é uma excelente advogada e de um conhecimento incrível. Muito responsável e profissional no que faz. Super dedicada com seus clientes, trata a todos de maneira cordial. Esclarece todas às dúvidas de maneira clara.",
+      "Excelente. Profissional competente comprometido com as demandas e de muita confiança. Transmite tranquilidade do início ao fim do processo.",
   },
   {
-    name: "Izabel Nogueira",
-    reviewsCount: "1 avaliação",
+    name: "Alexandre Araujo",
+    badge: "Cliente Verificado",
+    reviewsCount: "2 avaliações",
     date: "Há 1 ano",
-    highlight: "Confiança e empenho ao máximo",
+    highlight: "Amplo conhecimento e preço acessível",
     content:
-      "A Doutora Izabella é muito atenciosa e competente, sentimos muita confiança que ela vai se empenhar ao máximo para que consigamos atingir nossos objetivos.",
+      "Serviço realizado com excelência. Amplo conhecimento do serviço prestado. Preço acessível e clareza nas orientações.",
   },
   {
-    name: "Carlos Jader",
-    reviewsCount: "5 avaliações",
-    date: "Há 2 anos",
-    highlight: "Grande conhecimento e cuidado com o cliente",
+    name: "Loren Prado",
+    badge: "Local Guide",
+    reviewsCount: "11 avaliações · 17 fotos",
+    date: "Há 1 ano",
+    highlight: "Atencioso e muito competente",
     content:
-      "Excelente advogada! Se preocupa com os clientes, trata todos muito bem! Recomendo, pois além de uma ótima pessoa é uma profissional dedicada e com grande conhecimento!",
+      "Excelente profissional, atencioso e muito competente! Recomendo demais, sem dúvidas uma ótima escolha para quem busca segurança.",
   },
   {
-    name: "Edson Lima",
-    reviewsCount: "9 avaliações",
-    date: "Há 3 anos",
-    highlight: "Serviço que superou expectativas",
+    name: "Nayara Rose",
+    badge: "Cliente Verificada",
+    reviewsCount: "3 avaliações",
+    date: "Há 1 ano",
+    highlight: "Muito atencioso e esclarece todas as dúvidas",
     content:
-      "A Drª Izabella é uma excelente profissional. Foi indicada por um amigo meu e prestou um excepcional serviço superando minhas expectativas. Eu a recomendo.",
+      "Muito atencioso e prestativo, esclarece todas as dúvidas, excelente atendimento. Fiquei muito satisfeita com o serviço, e sempre o indicarei.",
   },
   {
-    name: "Isabela Santos",
-    reviewsCount: "1 avaliação",
-    date: "Há 4 anos",
-    highlight: "Trabalho impecável e correto",
+    name: "José Alves",
+    badge: "Local Guide",
+    reviewsCount: "22 avaliações · 4 fotos",
+    date: "Há 1 ano",
+    highlight: "Muita competência e atendimento excelente",
     content:
-      "A Dra. é uma excelente advogada, extremamente correta e competente, trabalha de forma impecável. Recomendo demais!",
+      "Muita competência, atendimento excelente e muito profissional, é o melhor do Brasil. Dedicação que faz toda a diferença.",
+  },
+  {
+    name: "Miriam Melo",
+    badge: "Cliente Verificada",
+    reviewsCount: "4 avaliações",
+    date: "Há 1 ano",
+    highlight: "Profissionalismo, competência e confiança",
+    content:
+      "Serviço prestado com profissionalismo, competência e confiança. Sempre pronto a responder com prontidão e ética.",
+  },
+  {
+    name: "Leonardo Miguel",
+    badge: "Cliente Verificado",
+    reviewsCount: "9 avaliações · 2 fotos",
+    date: "Há 1 ano",
+    highlight: "Excelente profissional. Eu indico!",
+    content:
+      "Excelente Profissional. Eu indico de olhos fechados pela integridade, dedicação e resultado entregue.",
   },
 ];
 
@@ -243,12 +323,14 @@ function Heading({
 }) {
   return (
     <div className="max-w-2xl">
-      <p className={light ? "eyebrow-light mb-4" : "eyebrow mb-4"}>{eyebrow}</p>
+      <p className={light ? "eyebrow-light mb-4 text-[#e5ca8f]" : "eyebrow mb-4 text-[#9b7020]"}>
+        {eyebrow}
+      </p>
       <h2
         className={
           light
-            ? "font-serif text-4xl leading-[1.07] tracking-[-0.035em] text-white sm:text-5xl lg:text-[3.55rem]"
-            : "font-serif text-4xl leading-[1.07] tracking-[-0.035em] text-ink sm:text-5xl lg:text-[3.55rem]"
+            ? "font-serif text-3xl font-bold leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-[3.25rem]"
+            : "font-serif text-3xl font-bold leading-[1.12] tracking-tight text-[#16120e] sm:text-4xl lg:text-[3.25rem]"
         }
       >
         {children}
@@ -257,8 +339,8 @@ function Heading({
         <p
           className={
             light
-              ? "mt-5 max-w-xl text-[15px] leading-7 text-white/70"
-              : "mt-5 max-w-xl text-[15px] leading-7 text-ink-soft"
+              ? "mt-5 max-w-xl text-[15px] leading-7 text-neutral-300"
+              : "mt-5 max-w-xl text-[15px] leading-7 text-[#61574e]"
           }
         >
           {description}
@@ -285,23 +367,23 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <main className="overflow-hidden bg-ivory text-ink">
-        {/* Navigation Bar */}
-        <header className="sticky top-0 z-40 border-b border-ink/10 bg-ivory/95 backdrop-blur-xl">
-          <div className="mx-auto flex h-[90px] max-w-7xl items-center justify-between gap-5 px-5 sm:h-[105px] sm:px-8 lg:px-12">
+      <main className="overflow-hidden bg-[#080604] text-white">
+        {/* Navigation Bar - Dark Mode & +30% Logo Size */}
+        <header className="sticky top-0 z-40 border-b border-brand-700/25 bg-[#0a0805]/95 backdrop-blur-xl">
+          <div className="mx-auto flex h-[105px] max-w-7xl items-center justify-between gap-5 px-5 sm:h-[122px] lg:h-[132px] sm:px-8 lg:px-12">
             <a
               href="#inicio"
-              aria-label="Izabella Rennó Advocacia — Início"
+              aria-label="Jean César Advogado & Associados — Início"
               onClick={closeMenu}
-              className="flex items-center gap-3 transition-opacity hover:opacity-90"
+              className="flex items-center gap-3 transition-opacity hover:opacity-95"
             >
               <Image
                 src="/logo.png"
-                width={500}
-                height={171}
-                alt="Izabella Rennó Advocacia — OAB/MG 201.285"
+                width={1024}
+                height={341}
+                alt="Jean César Advogado & Associados — OAB/MG 213.482"
                 priority
-                className="h-16 w-auto object-contain sm:h-[77px]"
+                className="h-[62px] w-auto object-contain sm:h-[84px] lg:h-[92px]"
               />
             </a>
 
@@ -313,13 +395,13 @@ export default function Home() {
                 Início
               </a>
               <a className="nav-link" href="#sobre">
-                A Advogada
+                O Advogado
               </a>
               <a className="nav-link" href="#atuacao">
                 Atuação
               </a>
-              <a className="nav-link" href="#artigos">
-                Conteúdo Jurídico
+              <a className="nav-link" href="#diferenciais">
+                Compromisso
               </a>
               <a className="nav-link" href="#avaliacoes">
                 Avaliações
@@ -331,19 +413,28 @@ export default function Home() {
 
             <div className="hidden items-center gap-3 lg:flex">
               <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram do Dr. Jean César"
+                className="grid size-11 place-items-center rounded-md border border-brand-700/40 bg-[#14100b] text-brand-300 transition-all hover:border-brand-400 hover:bg-brand-900/60 hover:text-white"
+              >
+                <InstagramIcon size={18} />
+              </a>
+              <a
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="WhatsApp da Dra. Izabella Rennó"
-                className="grid size-10 place-items-center rounded-full border border-ink/15 text-brand-700 transition-all hover:border-brand-700 hover:bg-brand-50 hover:text-brand-800"
+                aria-label="WhatsApp do Dr. Jean César"
+                className="grid size-11 place-items-center rounded-md border border-brand-700/40 bg-[#14100b] text-brand-300 transition-all hover:border-brand-400 hover:bg-brand-900/60 hover:text-white"
               >
-                <WhatsAppIcon size={18} />
+                <WhatsAppIcon size={19} />
               </a>
               <GlowingButton
                 href={getWhatsAppUrl()}
                 target="_blank"
                 size="sm"
-                className="rounded-full shadow-sm"
+                className="shadow-sm"
               >
                 Consulta no WhatsApp <ArrowUpRight size={14} />
               </GlowingButton>
@@ -354,10 +445,10 @@ export default function Home() {
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-navigation"
-              className="grid size-11 place-items-center rounded-full border border-ink/15 text-ink lg:hidden"
+              className="grid size-12 place-items-center rounded-md border border-brand-700/40 bg-[#14100b] text-brand-200 lg:hidden"
               onClick={() => setMenuOpen((open) => !open)}
             >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+              {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
 
@@ -370,28 +461,38 @@ export default function Home() {
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.22 }}
-                className="overflow-hidden border-t border-ink/10 bg-ivory px-6 lg:hidden"
+                className="overflow-hidden border-t border-brand-700/25 bg-[#0c0906] px-6 lg:hidden"
               >
-                <div className="mx-auto flex max-w-7xl flex-col gap-1 py-4">
+                <div className="mx-auto flex max-w-7xl flex-col gap-1 py-5">
                   {[
                     ["Início", "#inicio"],
-                    ["A Advogada", "#sobre"],
+                    ["O Advogado & Credenciais", "#sobre"],
                     ["Áreas de Atuação", "#atuacao"],
-                    ["Conteúdo Jurídico", "#artigos"],
+                    ["Compromisso & Diferenciais", "#diferenciais"],
                     ["Avaliações no Google", "#avaliacoes"],
-                    ["Contato & Localização", "#contato"],
+                    ["Contato & Sede", "#contato"],
                   ].map(([label, href]) => (
                     <a
                       key={label}
                       href={href}
                       onClick={closeMenu}
-                      className="py-3 text-sm font-medium text-ink-soft hover:text-brand-700"
+                      className="py-3 text-sm font-semibold uppercase tracking-wider text-neutral-300 hover:text-brand-300"
                     >
                       {label}
                     </a>
                   ))}
+                  <div className="mt-3 flex items-center gap-3">
+                    <a
+                      href={INSTAGRAM_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex flex-1 items-center justify-center gap-2 rounded-md border border-brand-700/40 bg-[#14100b] py-3 text-xs font-semibold text-brand-200"
+                    >
+                      <InstagramIcon size={16} /> @jeancesar.adv
+                    </a>
+                  </div>
                   <a
-                    className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-brand-700 px-5 py-3.5 text-xs font-semibold uppercase tracking-[0.13em] text-white shadow-md transition-all hover:bg-brand-800"
+                    className="mt-2 inline-flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-brand-600 via-brand-500 to-brand-700 px-5 py-3.5 text-xs font-bold uppercase tracking-[0.14em] text-white shadow-lg transition-all hover:brightness-110"
                     href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noreferrer"
@@ -405,45 +506,48 @@ export default function Home() {
           </AnimatePresence>
         </header>
 
-        {/* Hero Section */}
+        {/* DOBRA 1: HERO SECTION (MODO ESCURO - MÁXIMA AUTORIDADE & MASCULINO) */}
         <section
           id="inicio"
-          className="relative isolate scroll-mt-24 border-b border-ink/10"
+          className="relative isolate scroll-mt-24 border-b border-brand-700/25 bg-[#080604] py-16 sm:py-20 lg:min-h-[760px] lg:py-24"
         >
-          <div className="pointer-events-none absolute -right-32 top-8 -z-10 size-[36rem] rounded-full bg-brand-200/40 blur-3xl" />
-          <div className="pointer-events-none absolute -left-20 bottom-10 -z-10 size-[28rem] rounded-full bg-brand-100/50 blur-3xl" />
+          {/* Subtle masculine ambient glows */}
+          <div className="pointer-events-none absolute -right-32 top-10 -z-10 size-[38rem] rounded-full bg-brand-500/10 blur-[120px]" />
+          <div className="pointer-events-none absolute -left-20 bottom-10 -z-10 size-[30rem] rounded-full bg-brand-900/25 blur-[120px]" />
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(197,155,63,0.12),rgba(8,6,4,0))]" />
 
-          <div className="mx-auto grid min-h-[660px] max-w-7xl items-center gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:min-h-[720px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:px-12 lg:py-20">
+          <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:px-12">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={stagger}
-              className="relative z-10 max-w-2xl lg:py-6"
+              className="relative z-10 max-w-2xl lg:py-4"
             >
-              <motion.p variants={reveal} className="eyebrow mb-6">
-                <span className="size-2 rounded-full bg-brand-700" />
-                OAB/MG 201.285 · Edifício Santa Clara · Itajubá - MG
-              </motion.p>
+              <motion.div variants={reveal} className="mb-6 inline-flex items-center gap-2.5 rounded-md border border-brand-500/35 bg-[#14100b] px-3.5 py-1.5 text-[11px] font-bold tracking-[0.14em] text-brand-300">
+                <span className="size-2 rounded-full bg-brand-400 animate-pulse" />
+                OAB/MG 213.482 · Presidência Direito Imobiliário OAB/MG · Mateus Leme
+              </motion.div>
 
               <motion.h1
                 variants={reveal}
-                className="max-w-[760px] font-serif text-[3.2rem] leading-[0.98] tracking-[-0.045em] text-ink sm:text-6xl lg:text-[4.9rem]"
+                className="font-serif text-[2.75rem] font-bold leading-[1.04] tracking-tight text-white sm:text-5xl lg:text-[4.2rem]"
               >
-                Alta precisão jurídica com{" "}
-                <span className="italic text-brand-700 font-serif">
-                  dedicação exclusiva
-                </span>{" "}
-                a cada causa.
+                Segurança jurídica e proteção patrimonial com{" "}
+                <span className="bg-gradient-to-r from-brand-300 via-brand-400 to-brand-500 bg-clip-text text-transparent">
+                  máxima firmeza técnica.
+                </span>
               </motion.h1>
 
               <motion.p
                 variants={reveal}
-                className="mt-7 max-w-xl text-[15px] leading-7 text-ink-soft sm:text-base sm:leading-8"
+                className="mt-7 max-w-xl text-[15px] leading-7 text-neutral-300 sm:text-base sm:leading-8"
               >
-                Atendimento humanizado, ético e resolutivo conduzido pela Dra.
-                Izabella Rennó. Soluções jurídicas seguras nas áreas Cível,
-                Contratos, Consumidor & Bancário, Família e Trabalhista —
-                presencial em Itajubá e on-line em todo o Brasil.
+                Atuação jurídica especializada conduzida pelo Dr. Jean César
+                Rodrigues dos Santos, Presidente da Comissão de Direito
+                Imobiliário da 145ª Subseção da OAB/MG. Resolução combativa de
+                conflitos, regularização fundiária de áreas rurais e urbanas,
+                estruturação de contratos, direito civil, família e sucessões —
+                presencial no Centro de Mateus Leme e on-line em todo o Brasil.
               </motion.p>
 
               <motion.div
@@ -454,13 +558,13 @@ export default function Home() {
                   href={getWhatsAppUrl()}
                   target="_blank"
                   size="lg"
-                  className="rounded-full shadow-md"
+                  className="shadow-xl"
                 >
-                  <WhatsAppIcon size={16} /> Falar com a Dra. Izabella
+                  <WhatsAppIcon size={17} /> Falar com o Dr. Jean César
                 </GlowingButton>
                 <a
                   href="#atuacao"
-                  className="group inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-ink transition-colors hover:text-brand-700"
+                  className="group inline-flex items-center gap-2 rounded-md border border-brand-700/40 bg-[#14100b]/60 px-5 py-4 text-xs font-bold uppercase tracking-[0.12em] text-neutral-200 transition-colors hover:border-brand-400 hover:text-brand-300"
                 >
                   Conhecer áreas de atuação{" "}
                   <ArrowRight
@@ -472,24 +576,24 @@ export default function Home() {
 
               <motion.div
                 variants={reveal}
-                className="mt-12 flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-ink/10 pt-6 text-xs text-ink-soft"
+                className="mt-12 grid grid-cols-1 gap-3 border-t border-brand-700/20 pt-6 sm:grid-cols-3 text-xs text-neutral-300"
               >
-                <span className="inline-flex items-center gap-2 font-medium">
-                  <Award size={16} className="text-brand-700" /> Formação
-                  HarvardX em Contratos
-                </span>
-                <span className="inline-flex items-center gap-2 font-medium">
-                  <Star size={15} className="fill-brand-700 text-brand-700" />{" "}
-                  4,9 estrelas no Google (50+ avaliações)
-                </span>
-                <span className="inline-flex items-center gap-2 font-medium">
-                  <MapPin size={15} className="text-brand-700" /> Presencial em
-                  Itajubá e on-line
-                </span>
+                <div className="flex items-center gap-2 font-medium">
+                  <ShieldCheck size={18} className="text-brand-400 shrink-0" />
+                  <span>Pres. Comissão Direito Imobiliário</span>
+                </div>
+                <div className="flex items-center gap-2 font-medium">
+                  <Star size={17} className="fill-brand-400 text-brand-400 shrink-0" />
+                  <span>5,0 ★ Unânime (15 Avaliações)</span>
+                </div>
+                <div className="flex items-center gap-2 font-medium">
+                  <MapPin size={17} className="text-brand-400 shrink-0" />
+                  <span>Sede Centro de Mateus Leme</span>
+                </div>
               </motion.div>
             </motion.div>
 
-            {/* Hero Image Presentation */}
+            {/* Hero Image Presentation - Masculine Framed Style */}
             <motion.div
               initial={{ opacity: 0, scale: 0.97, y: 18 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -498,81 +602,81 @@ export default function Home() {
                 delay: 0.18,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="relative mx-auto w-full max-w-[470px] lg:ml-auto lg:mr-3"
+              className="relative mx-auto w-full max-w-[480px] lg:ml-auto"
             >
-              {/* Outer decorative gold border */}
-              <div className="absolute -inset-3 -rotate-2 rounded-[46%_46%_5%_5%] border border-brand-700/25 sm:-inset-4" />
+              {/* Outer architectural gold frame */}
+              <div className="absolute -inset-3.5 rounded-lg border border-brand-500/35 bg-[#120e09]/40 backdrop-blur-sm sm:-inset-4" />
 
               {/* Main portrait */}
-              <div className="relative aspect-[0.82] overflow-hidden rounded-[46%_46%_5%_5%] bg-[#ded7d0] shadow-card">
+              <div className="relative aspect-[0.84] overflow-hidden rounded-md border-2 border-brand-500/50 bg-[#16120b] shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
                 <Image
-                  src="/imgi_8_652076002_18074248049545715_1199206770821780813_n.jpg"
-                  alt="Dra. Izabella Rennó Del-Ducca de Souza — Advogada OAB/MG 201.285"
+                  src="/jean-cesar.png"
+                  alt="Dr. Jean César Rodrigues dos Santos — Advogado OAB/MG 213.482"
                   fill
                   priority
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 42vw"
                   className="object-cover object-[50%_15%]"
                 />
-                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-950/85 via-brand-950/40 to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-3 text-white sm:bottom-8 sm:left-8 sm:right-8">
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#080604] via-[#080604]/60 to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-3 text-white sm:bottom-7 sm:left-7 sm:right-7">
                   <div>
-                    <p className="font-serif text-2xl font-normal tracking-wide">
-                      Dra. Izabella Rennó
+                    <p className="font-serif text-2xl font-bold tracking-wide">
+                      Dr. Jean César
                     </p>
-                    <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-brand-200">
-                      OAB/MG 201.285 · Advocacia
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-brand-300">
+                      OAB/MG 213.482 · Pres. Com. Imobiliário
                     </p>
                   </div>
-                  <span className="grid size-11 shrink-0 place-items-center rounded-full border border-brand-300/40 bg-brand-950/40 text-brand-200 backdrop-blur-sm">
-                    <Scale size={18} />
+                  <span className="grid size-11 shrink-0 place-items-center rounded-md border border-brand-400/50 bg-[#14100b]/80 text-brand-300 shadow-md">
+                    <Scale size={20} />
                   </span>
                 </div>
               </div>
 
               {/* Floating badges */}
-              <div className="absolute -left-4 top-[14%] rounded-full border border-brand-700/20 bg-ivory px-4 py-2.5 text-[10px] font-bold tracking-[0.14em] text-brand-800 shadow-card sm:-left-9 sm:px-5">
-                ATENDIMENTO MINUCIOSO
+              <div className="absolute -left-4 top-[12%] rounded-md border border-brand-500/40 bg-[#14100b] px-4 py-2.5 text-[10px] font-bold tracking-[0.14em] text-brand-300 shadow-2xl sm:-left-8 sm:px-5">
+                DEFESA PATRIMONIAL COMBATIVA
               </div>
 
-              <div className="absolute -right-3 bottom-[22%] rounded-2xl border border-brand-700/20 bg-white/95 p-3.5 shadow-card backdrop-blur-md sm:-right-8">
-                <div className="flex items-center gap-2 text-brand-700">
-                  <Star size={14} className="fill-brand-700" />
-                  <span className="font-serif text-lg font-bold text-ink">
-                    4,9 / 5,0
+              <div className="absolute -right-3 bottom-[18%] rounded-md border border-brand-500/40 bg-[#14100b]/95 p-3.5 shadow-2xl backdrop-blur-md sm:-right-7">
+                <div className="flex items-center gap-2 text-brand-400">
+                  <Star size={15} className="fill-brand-400" />
+                  <span className="font-serif text-lg font-bold text-white">
+                    5,0 / 5,0
                   </span>
                 </div>
-                <p className="mt-0.5 text-[10px] uppercase tracking-wider text-ink-soft">
-                  50+ Avaliações Google
+                <p className="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-neutral-400">
+                  15 Avaliações Google
                 </p>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Highlights Banner */}
+        {/* DOBRA DE MÉTRICAS / CREDENCIAIS (MODO ESCURO - GRAFITE & OURO) */}
         <section
           aria-label="Credenciais e Destaques"
-          className="border-b border-ink/10 bg-white/70"
+          className="border-b border-brand-700/25 bg-[#100d08]"
         >
-          <div className="mx-auto grid max-w-7xl gap-7 px-5 py-8 sm:grid-cols-4 sm:gap-4 sm:px-8 lg:px-12">
+          <div className="mx-auto grid max-w-7xl gap-7 px-5 py-9 sm:grid-cols-4 sm:gap-4 sm:px-8 lg:px-12">
             {[
-              ["4,9 ★", "nota máxima com 50+ avaliações no Google"],
-              ["HarvardX", "certificação em Direito Contratual"],
-              ["OAB/MG", "nº 201.285 com atuação especializada"],
-              ["Itajubá & Brasil", "atendimento presencial e 100% on-line"],
+              ["5,0 ★", "Nota máxima unânime em 15 avaliações no Google"],
+              ["OAB/MG", "nº 213.482 com atuação técnica e combativa"],
+              ["Presidência OAB", "Comissão de Direito Imobiliário (145ª Subseção)"],
+              ["Mateus Leme & Brasil", "Sede própria no Centro e atendimento digital"],
             ].map(([value, label], index) => (
               <div
                 key={label}
                 className={
                   index > 0
-                    ? "flex items-center gap-4 sm:justify-center sm:border-l sm:border-ink/10"
+                    ? "flex items-center gap-4 sm:justify-center sm:border-l sm:border-brand-700/20"
                     : "flex items-center gap-4 sm:justify-center"
                 }
               >
-                <span className="font-serif text-3xl font-semibold text-brand-700">
+                <span className="font-serif text-2xl font-bold text-brand-400 sm:text-3xl">
                   {value}
                 </span>
-                <span className="max-w-[155px] text-[11px] leading-5 text-ink-soft">
+                <span className="max-w-[160px] text-[11px] leading-5 text-neutral-300 font-medium">
                   {label}
                 </span>
               </div>
@@ -580,48 +684,48 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sobre a Dra. Izabella Rennó */}
+        {/* DOBRA 2: SOBRE O ADVOGADO (ALTO CONTRASTE - PEDRA EXECUTIVA / MARFIM MASCULINO) */}
         <section
           id="sobre"
-          className="scroll-mt-24 bg-white py-20 sm:py-28 lg:py-32"
+          className="scroll-mt-24 bg-[#f6f2ec] text-[#16120e] py-20 sm:py-28 lg:py-32"
         >
           <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[0.94fr_1.06fr] lg:gap-20 lg:px-12">
-            {/* Office photo with HarvardX Certificate */}
+            {/* Portrait with OAB Commission certification */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={reveal}
-              className="relative mx-auto w-full max-w-[540px]"
+              className="relative mx-auto w-full max-w-[520px]"
             >
-              <div className="relative aspect-[0.95] overflow-hidden rounded-[2px] bg-[#ded7d0] shadow-card">
+              <div className="relative aspect-[0.92] overflow-hidden rounded-md border-2 border-brand-700/30 bg-[#ded7d0] shadow-xl">
                 <Image
-                  src="/imgi_46_669839595_18577841050053593_6416266873760283509_n.jpg"
-                  alt="Dra. Izabella Rennó em seu escritório com certificado HarvardX em Contract Law"
+                  src="/jean-cesar.png"
+                  alt="Dr. Jean César Rodrigues dos Santos — Presidente da Comissão de Direito Imobiliário da OAB/MG"
                   fill
                   sizes="(max-width: 1024px) 90vw, 45vw"
-                  className="object-cover object-[50%_25%]"
+                  className="object-cover object-[50%_18%]"
                 />
               </div>
 
               {/* Authority card */}
-              <div className="absolute -bottom-6 right-3 max-w-[270px] border-l-2 border-brand-700 bg-ivory px-5 py-4 shadow-card sm:-right-6 sm:px-6">
+              <div className="absolute -bottom-6 right-3 max-w-[300px] rounded-sm border-l-4 border-brand-700 bg-white px-5 py-4 shadow-xl sm:-right-6 sm:px-6">
                 <div className="flex items-center gap-2 text-brand-700">
-                  <Award size={16} />
+                  <ShieldCheck size={18} />
                   <p className="text-[10px] font-bold uppercase tracking-[0.16em]">
-                    Harvard Law School
+                    OAB/MG · 145ª Subseção
                   </p>
                 </div>
-                <p className="mt-1 font-serif text-lg leading-snug text-ink">
-                  Contract Law Certification
+                <p className="mt-1 font-serif text-base font-bold leading-snug text-[#16120e] sm:text-lg">
+                  Comissão de Direito Imobiliário
                 </p>
-                <p className="mt-1 text-[11px] leading-4 text-ink-soft">
-                  Formação contínua de padrão internacional aplicada à sua
-                  defesa.
+                <p className="mt-1 text-[11px] leading-4 text-[#61574e]">
+                  Liderança institucional e domínio técnico em prol da segurança
+                  patrimonial.
                 </p>
               </div>
 
-              <span className="absolute -left-4 -top-4 -z-10 size-24 border-l border-t border-brand-700/40 sm:-left-7 sm:-top-7 sm:size-32" />
+              <span className="absolute -left-4 -top-4 -z-10 size-24 border-l-2 border-t-2 border-brand-700/50 sm:-left-7 sm:-top-7 sm:size-32" />
             </motion.div>
 
             {/* Text description */}
@@ -631,86 +735,86 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
               variants={stagger}
             >
-              <motion.p variants={reveal} className="eyebrow">
-                TRAJETÓRIA & RIGOR TÉCNICO
+              <motion.p variants={reveal} className="eyebrow mb-4">
+                TRAJETÓRIA & LIDERANÇA INSTITUCIONAL
               </motion.p>
               <motion.h2
                 variants={reveal}
-                className="mt-4 max-w-2xl font-serif text-4xl leading-[1.09] tracking-[-0.035em] text-ink sm:text-5xl lg:text-[3.45rem]"
+                className="font-serif text-3xl font-bold leading-[1.12] tracking-tight text-[#16120e] sm:text-4xl lg:text-[3.3rem]"
               >
-                Uma advocacia que une{" "}
-                <span className="italic text-brand-700">
-                  profundidade jurídica
-                </span>{" "}
-                e compromisso pessoal.
+                Uma advocacia pautada na{" "}
+                <span className="text-brand-700">precisão técnica</span> e na
+                defesa intransigente do seu patrimônio.
               </motion.h2>
 
               <motion.p
                 variants={reveal}
-                className="mt-6 max-w-xl text-[15px] leading-7 text-ink-soft"
+                className="mt-6 max-w-xl text-[15px] leading-7 text-[#61574e]"
               >
-                A Dra. Izabella Rennó Del-Ducca de Souza (OAB/MG 201.285)
-                consolida sua prática na advocacia sob um princípio
-                fundamental: cada causa é única e merece atenção artesanal. Não
-                utilizamos petições genéricas nem respostas padronizadas.
+                O Dr. Jean César Rodrigues dos Santos (OAB/MG 213.482) lidera o
+                escritório Jean César Advogado & Associados com uma premissa clara:
+                cada demanda patrimonial, familiar ou empresarial exige estudo
+                aprofundado, rigor documental e atuação combativa. Não utilizamos
+                respostas padronizadas nem petições genéricas.
               </motion.p>
 
               <motion.p
                 variants={reveal}
-                className="mt-4 max-w-xl text-[15px] leading-7 text-ink-soft"
+                className="mt-4 max-w-xl text-[15px] leading-7 text-[#61574e]"
               >
-                Com certificação de excelência internacional pela prestigiada{" "}
-                <strong className="text-ink">
-                  Harvard Law School (HarvardX em Contract Law)
+                Como{" "}
+                <strong className="text-[#16120e] font-semibold">
+                  Presidente da Comissão de Direito Imobiliário da 145ª Subseção
+                  da OAB/MG (Mateus Leme)
                 </strong>
-                , a Dra. Izabella alia rigor analítico, clareza absoluta na
-                comunicação e atuação combativa em litígios cíveis, bancários,
-                contratuais e familiares.
+                , consolidou autoridade na regularização de propriedades rurais
+                (com destaque na região de Serra Azul), documentação de lotes,
+                ações de usucapião, auditoria registral e resolução de disputas
+                cíveis e contratuais complexas.
               </motion.p>
 
               <motion.div
                 variants={reveal}
                 className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2"
               >
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
+                <div className="flex items-center gap-2.5 text-xs text-[#16120e] font-semibold">
                   <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Leitura minuciosa de cada lauda processual</span>
+                  <span>Presidência da Comissão de Direito Imobiliário</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
+                <div className="flex items-center gap-2.5 text-xs text-[#16120e] font-semibold">
                   <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Transparência total em cada etapa do caso</span>
+                  <span>Especialista em áreas rurais, lotes e usucapião</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
+                <div className="flex items-center gap-2.5 text-xs text-[#16120e] font-semibold">
                   <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Escritório sediado no Centro de Itajubá</span>
+                  <span>Sede no Centro de Mateus Leme (1º Andar)</span>
                 </div>
-                <div className="flex items-center gap-2.5 text-xs text-ink font-medium">
+                <div className="flex items-center gap-2.5 text-xs text-[#16120e] font-semibold">
                   <CheckCircle2 size={16} className="text-brand-700 shrink-0" />
-                  <span>Atendimento on-line em todo o país</span>
+                  <span>Atendimento presencial e on-line em todo o país</span>
                 </div>
               </motion.div>
 
               <motion.div variants={reveal} className="mt-9">
                 <GlowingButton
                   href={getWhatsAppUrl(
-                    "Olá, Dra. Izabella Rennó. Gostaria de entender como o escritório pode atuar no meu caso."
+                    "Olá, Dr. Jean César. Gostaria de entender como o escritório pode atuar no meu caso."
                   )}
                   target="_blank"
                   size="md"
-                  className="rounded-full shadow-md"
+                  className="shadow-md"
                 >
-                  <WhatsAppIcon size={16} /> Agendar consulta com a Dra.
-                  Izabella
+                  <WhatsAppIcon size={16} /> Agendar consulta com o Dr. Jean César
                 </GlowingButton>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
-        {/* Áreas de Atuação */}
+        {/* DOBRA 3: ÁREAS DE ATUAÇÃO (MODO ESCURO - CARDS GRAFITE COM BORDAS EM OURO) */}
         <section
           id="atuacao"
-          className="scroll-mt-24 bg-ivory py-20 sm:py-28 lg:py-32"
+          className="scroll-mt-24 border-y border-brand-700/25 bg-[#0a0805] py-20 sm:py-28 lg:py-32"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <motion.div
@@ -722,16 +826,15 @@ export default function Home() {
             >
               <Heading
                 eyebrow="ÁREAS DE ATUAÇÃO ESTRATÉGICA"
-                description="Atuação técnica aprofundada para proteger seu patrimônio, sua família e seus direitos fundamentais."
+                light
+                description="Atuação técnica especializada para proteger sua propriedade, seus negócios, sua família e seus direitos patrimoniais."
               >
                 Segurança jurídica e estratégia nos{" "}
-                <span className="italic text-brand-700">
-                  momentos mais decisivos.
-                </span>
+                <span className="text-brand-300">momentos mais decisivos.</span>
               </Heading>
-              <p className="max-w-[260px] pb-1 text-xs leading-6 text-ink-soft">
-                Toque em uma área para visualizar os temas atendidos e consultar
-                diretamente a Dra. Izabella.
+              <p className="max-w-[270px] pb-1 text-xs leading-6 text-neutral-400 font-medium">
+                Selecione uma área para visualizar os tópicos atendidos e consultar
+                diretamente o Dr. Jean César.
               </p>
             </motion.div>
 
@@ -748,25 +851,25 @@ export default function Home() {
                   <motion.article
                     key={area.id}
                     variants={reveal}
-                    className="group flex min-h-[340px] flex-col border border-ink/10 bg-white p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-700/40 hover:shadow-card sm:p-8"
+                    className="group flex min-h-[360px] flex-col rounded-md border border-brand-700/30 bg-[#14100b] p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-400 hover:shadow-[0_12px_40px_rgba(197,155,63,0.15)] sm:p-8"
                   >
                     <div className="flex items-start justify-between">
-                      <span className="grid size-12 place-items-center rounded-full bg-brand-50 text-brand-700 transition-colors group-hover:bg-brand-700 group-hover:text-white">
-                        <Icon size={22} strokeWidth={1.5} />
+                      <span className="grid size-12 place-items-center rounded-md border border-brand-700/40 bg-[#1f1912] text-brand-300 transition-colors group-hover:border-brand-400 group-hover:bg-brand-500 group-hover:text-black">
+                        <Icon size={22} strokeWidth={1.8} />
                       </span>
-                      <span className="font-serif text-2xl text-brand-700/50">
+                      <span className="font-serif text-2xl font-bold text-brand-500/40 group-hover:text-brand-400">
                         0{index + 1}
                       </span>
                     </div>
 
                     <div className="mt-6">
-                      <span className="inline-block rounded-full bg-brand-50 px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-brand-800">
+                      <span className="inline-block rounded-sm border border-brand-700/40 bg-[#1f1912] px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-brand-300">
                         {area.tag}
                       </span>
-                      <h3 className="mt-3 font-serif text-[1.65rem] leading-tight text-ink">
+                      <h3 className="mt-3 font-serif text-[1.45rem] font-bold leading-tight text-white">
                         {area.title}
                       </h3>
-                      <p className="mt-3 text-[13px] leading-6 text-ink-soft">
+                      <p className="mt-3 text-[13px] leading-6 text-neutral-300">
                         {area.summary}
                       </p>
                     </div>
@@ -774,7 +877,7 @@ export default function Home() {
                     <button
                       type="button"
                       onClick={() => setActiveArea(area)}
-                      className="group/link mt-auto inline-flex w-fit items-center gap-2 pt-6 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-800 hover:text-brand-700"
+                      className="group/link mt-auto inline-flex w-fit items-center gap-2 pt-6 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-400 hover:text-brand-300"
                     >
                       Ver detalhes e tópicos{" "}
                       <ArrowRight
@@ -789,136 +892,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Informação e Análise Jurídica (Posts reais fornecidos) */}
-        <section id="artigos" className="bg-[#ede7df] py-20 sm:py-28">
-          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-            <div className="grid items-end gap-7 md:grid-cols-[1fr_auto]">
-              <Heading
-                eyebrow="ANÁLISE & CONTEÚDO JURÍDICO"
-                description="Orientações e esclarecimentos práticos da Dra. Izabella Rennó sobre situações concretas do dia a dia."
-              >
-                Esclarecimento de direitos sobre{" "}
-                <span className="italic text-brand-700">temas reais.</span>
-              </Heading>
-              <a
-                href={getWhatsAppUrl(
-                  "Olá, Dra. Izabella. Vi seus conteúdos informativos e gostaria de tirar uma dúvida jurídica."
-                )}
-                target="_blank"
-                rel="noreferrer"
-                className="group mb-1 inline-flex w-fit items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-brand-800 hover:text-brand-700"
-              >
-                Fazer uma pergunta <ArrowUpRight size={15} />
-              </a>
-            </div>
-
-            <div className="mt-11 grid gap-8 md:grid-cols-2">
-              {/* Card 1: Banco / Tempo na fila */}
-              <motion.article
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.65 }}
-                className="group relative flex flex-col overflow-hidden rounded-[2px] border border-brand-700/20 bg-brand-950 text-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-700/40"
-              >
-                <div className="relative aspect-[1080/840] w-full overflow-hidden bg-[#1a120c]">
-                  <Image
-                    src="/imgi_37_624713445_18079582943205098_4776356004155678095_n.jpg"
-                    alt="Quanto vale seu tempo na fila do banco? — Dra. Izabella Rennó"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col justify-between p-7 sm:p-8">
-                  <div>
-                    <span className="inline-block rounded-full bg-brand-700/35 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-brand-200">
-                      Direito do Consumidor & Bancário
-                    </span>
-                    <h3 className="mt-4 font-serif text-2xl leading-snug sm:text-3xl text-white">
-                      Quanto vale seu tempo na fila do banco?
-                    </h3>
-                    <p className="mt-3 text-xs leading-6 text-white/70">
-                      A espera excessiva e desarrazoada em agências bancárias que
-                      ultrapassa os limites legais pode ensejar reparação civil
-                      com base na teoria do desvio produtivo do consumidor.
-                    </p>
-                  </div>
-                  <a
-                    href={getWhatsAppUrl(
-                      "Olá, Dra. Izabella. Gostaria de orientações sobre problemas com banco ou tempo abusivo de espera."
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-200 transition-colors hover:text-white"
-                  >
-                    Analisar minha situação <ArrowUpRight size={14} />
-                  </a>
-                </div>
-              </motion.article>
-
-              {/* Card 2: Doação e Ingratidão */}
-              <motion.article
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.65, delay: 0.1 }}
-                className="group relative flex flex-col overflow-hidden rounded-[2px] border border-brand-700/20 bg-[#1f1814] text-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand-700/40"
-              >
-                <div className="relative aspect-[1080/840] w-full overflow-hidden bg-[#18110d]">
-                  <Image
-                    src="/imgi_40_623014577_18101084674836895_2038662800172169102_n.jpg"
-                    alt="Posso cancelar uma doação por ingratidão de quem recebeu? — Dra. Izabella Rennó"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col justify-between p-7 sm:p-8">
-                  <div>
-                    <span className="inline-block rounded-full bg-brand-700/35 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-brand-200">
-                      Direito Civil & Patrimonial
-                    </span>
-                    <h3 className="mt-4 font-serif text-2xl leading-snug sm:text-3xl text-white">
-                      Posso cancelar uma doação por ingratidão de quem recebeu?
-                    </h3>
-                    <p className="mt-3 text-xs leading-6 text-white/70">
-                      O Código Civil resguarda expressamente hipóteses legais em
-                      que a doação pode ser revogada quando comprovada conduta
-                      grave do donatário ou descumprimento de obrigações.
-                    </p>
-                  </div>
-                  <a
-                    href={getWhatsAppUrl(
-                      "Olá, Dra. Izabella. Gostaria de tirar dúvidas sobre cancelamento de doação ou proteção de bens."
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.16em] text-brand-200 transition-colors hover:text-white"
-                  >
-                    Analisar minha situação <ArrowUpRight size={14} />
-                  </a>
-                </div>
-              </motion.article>
-            </div>
-          </div>
-        </section>
-
-        {/* Nosso Compromisso Ético e Operacional */}
-        <section className="relative overflow-hidden bg-brand-950 py-20 text-white sm:py-28 lg:py-32">
-          <div className="pointer-events-none absolute -left-28 top-1/4 size-96 rounded-full bg-brand-700/20 blur-3xl" />
+        {/* DOBRA 4: COMPROMISSO PROFISSIONAL (MODO ESCURO - OBSIDIAN PROFUNDO) */}
+        <section
+          id="diferenciais"
+          className="relative overflow-hidden bg-[#050403] py-20 text-white sm:py-28 lg:py-32"
+        >
+          <div className="pointer-events-none absolute -left-28 top-1/4 size-96 rounded-full bg-brand-700/15 blur-3xl" />
           <div className="pointer-events-none absolute -right-28 bottom-1/4 size-96 rounded-full bg-brand-800/15 blur-3xl" />
 
           <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:px-12">
             <Heading
               eyebrow="NOSSO COMPROMISSO PROFISSIONAL"
               light
-              description="A condução de cada demanda com a máxima técnica, transparência irrestrita e respeito ao tempo e aos anseios de quem nos procura."
+              description="A condução de cada demanda com a máxima técnica, transparência irrestrita e respeito ao tempo e aos objetivos de quem nos procura."
             >
               A precisão jurídica aliada ao{" "}
-              <span className="italic text-brand-200">
-                respeito que sua causa merece.
-              </span>
+              <span className="text-brand-300">respeito que sua causa merece.</span>
             </Heading>
 
             <motion.div
@@ -926,23 +915,23 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={stagger}
-              className="divide-y divide-white/15"
+              className="divide-y divide-white/10"
             >
               {[
                 [
                   "01",
-                  "Estudo aprofundado de cada linha processual",
-                  "Como ressaltam nossos clientes em depoimentos públicos, lemos o processo inteiro com extremo critério e redigimos manifestações minuciosas, sem modelos genéricos.",
+                  "Domínio prático e estudo aprofundado do caso",
+                  "Como comprovado nos depoimentos públicos de clientes, estudamos cada detalhe documental e registral com absoluto critério para apresentar soluções reais e viáveis.",
                 ],
                 [
                   "02",
-                  "Comunicação direta, transparente e acessível",
-                  "Você é mantido informado sobre cada movimentação em linguagem clara, sabendo exatamente quais são as chances, os riscos e as estratégias em curso.",
+                  "Comunicação direta, transparente e ágil",
+                  "Você é mantido informado sobre cada movimentação em linguagem clara, sabendo exatamente quais são as alternativas, os riscos e as estratégias em andamento.",
                 ],
                 [
                   "03",
-                  "Estratégia e combatividade de alto padrão",
-                  "Aliamos atualização doutrinária contínua e jurisprudência dos tribunais superiores para defender seus interesses com a máxima firmeza e combatividade.",
+                  "Preço justo e dedicação irrestrita aos resultados",
+                  "Compromisso ético, clareza sobre honorários e atuação resolutiva orientada a evitar litígios desnecessários e proteger o seu patrimônio com agilidade.",
                 ],
               ].map(([number, title, description]) => (
                 <motion.div
@@ -950,12 +939,14 @@ export default function Home() {
                   variants={reveal}
                   className="grid gap-3 py-6 first:pt-0 sm:grid-cols-[70px_1fr] sm:gap-6 sm:py-7"
                 >
-                  <span className="font-serif text-2xl font-semibold text-brand-300">
+                  <span className="font-serif text-3xl font-bold text-brand-400">
                     {number}
                   </span>
                   <div>
-                    <h3 className="font-serif text-2xl text-white">{title}</h3>
-                    <p className="mt-2 max-w-lg text-[13px] leading-6 text-white/70">
+                    <h3 className="font-serif text-xl font-bold text-white sm:text-2xl">
+                      {title}
+                    </h3>
+                    <p className="mt-2 max-w-lg text-[13px] leading-6 text-neutral-300">
                       {description}
                     </p>
                   </div>
@@ -965,22 +956,20 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Avaliações no Google (Depoimentos Reais) */}
+        {/* DOBRA 5: AVALIAÇÕES NO GOOGLE (PROVA SOCIAL - CLARA & CRISTALINA) */}
         <section
           id="avaliacoes"
-          className="scroll-mt-24 bg-white py-20 sm:py-28 lg:py-32"
+          className="scroll-mt-24 bg-white text-[#16120e] py-20 sm:py-28 lg:py-32"
         >
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
             <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20 lg:items-center">
               <div>
                 <Heading
                   eyebrow="PROVA SOCIAL & AVALIAÇÕES REAIS"
-                  description="A reputação consolidada da Dra. Izabella Rennó é construída através da dedicação extrema em cada caso. Confira as avaliações no perfil público do Google."
+                  description="A reputação sólida de Jean César Advogado & Associados é demonstrada pela excelência e confiança em cada caso. Confira avaliações reais registradas no Google Meu Negócio."
                 >
                   Confiança comprovada por quem{" "}
-                  <span className="italic text-brand-700">
-                    já alcançou seus objetivos.
-                  </span>
+                  <span className="text-brand-700">já alcançou seus objetivos.</span>
                 </Heading>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -988,24 +977,24 @@ export default function Home() {
                     href={GOOGLE_MAPS_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex items-center gap-2 border-b-2 border-brand-700/60 pb-1.5 text-xs font-bold uppercase tracking-[0.14em] text-brand-800 hover:border-brand-700 hover:text-brand-700"
+                    className="group inline-flex items-center gap-2 border-b-2 border-brand-700/60 pb-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#785414] hover:border-brand-700 hover:text-brand-700"
                   >
-                    Ver todas as avaliações no Google <ArrowUpRight size={15} />
+                    Ver todas as 15 avaliações no Google <ArrowUpRight size={15} />
                   </a>
                 </div>
 
                 {/* Rating highlights pills */}
                 <div className="mt-9 flex flex-wrap gap-2">
                   {[
-                    "Clareza nas explicações",
-                    "Extremamente atenciosa",
-                    "Profundo conhecimento técnico",
-                    "Leitura minuciosa do processo",
-                    "Objetivos alcançados",
+                    "Direito Imobiliário & Regularização",
+                    "Área Rural em Serra Azul",
+                    "Documentação de Lotes",
+                    "Preço Justo & Eficiência",
+                    "Atendimento Atencioso",
                   ].map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-ivory px-3.5 py-1.5 text-[11px] font-medium text-ink-soft"
+                      className="inline-flex items-center gap-1.5 rounded-sm border border-neutral-300 bg-[#f7f4ee] px-3.5 py-1.5 text-[11px] font-semibold text-[#16120e]"
                     >
                       <CheckCircle2 size={13} className="text-brand-700" />
                       {tag}
@@ -1014,20 +1003,20 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Public score box */}
-              <div className="relative flex min-h-[260px] flex-col justify-between overflow-hidden border border-brand-700/20 bg-ivory p-8 shadow-card sm:p-10">
-                <div className="absolute -right-10 -top-16 size-56 rounded-full border border-brand-700/10" />
-                <div className="absolute -right-2 -top-8 size-40 rounded-full border border-brand-700/10" />
+              {/* Public score box in Carbon & Gold */}
+              <div className="relative flex min-h-[260px] flex-col justify-between overflow-hidden rounded-md border border-brand-700/40 bg-[#100d08] p-8 text-white shadow-2xl sm:p-10">
+                <div className="absolute -right-10 -top-16 size-56 rounded-full border border-brand-500/10" />
+                <div className="absolute -right-2 -top-8 size-40 rounded-full border border-brand-500/10" />
 
                 <div className="relative flex items-center justify-between gap-4">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-800">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-300">
                     Avaliações Verificadas · Google Maps
                   </span>
-                  <div className="flex gap-1 text-brand-700" aria-label="5 estrelas">
+                  <div className="flex gap-1 text-brand-400" aria-label="5 estrelas">
                     {Array.from({ length: 5 }, (_, index) => (
                       <Star
                         key={index}
-                        size={17}
+                        size={18}
                         fill="currentColor"
                         strokeWidth={1}
                       />
@@ -1037,19 +1026,19 @@ export default function Home() {
 
                 <div className="relative mt-8 flex flex-wrap items-end justify-between gap-6">
                   <div>
-                    <span className="font-serif text-7xl font-normal leading-none text-ink sm:text-8xl">
-                      4,9
+                    <span className="font-serif text-7xl font-bold leading-none text-white sm:text-8xl">
+                      5,0
                     </span>
-                    <p className="mt-2 text-xs font-semibold text-brand-800">
-                      Excelente · Classificação Máxima
+                    <p className="mt-2 text-xs font-bold uppercase tracking-wider text-brand-300">
+                      Classificação Máxima · Unânime no Google
                     </p>
                   </div>
                   <div className="pb-1 text-right">
-                    <p className="font-serif text-3xl font-semibold text-brand-700">
-                      50+ avaliações
+                    <p className="font-serif text-3xl font-bold text-brand-400">
+                      15 avaliações
                     </p>
-                    <p className="mt-1 text-xs text-ink-soft">
-                      Perfil profissional verificado no Google
+                    <p className="mt-1 text-xs text-neutral-300">
+                      100% de avaliações 5 estrelas
                     </p>
                   </div>
                 </div>
@@ -1057,11 +1046,11 @@ export default function Home() {
             </div>
 
             {/* Testimonials Grid */}
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {clientReviews.slice(0, 4).map((review) => (
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {clientReviews.slice(0, 6).map((review) => (
                 <div
                   key={review.name}
-                  className="flex flex-col justify-between border border-ink/10 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-card"
+                  className="flex flex-col justify-between rounded-md border border-neutral-200 bg-[#fbf9f5] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-700/40 hover:shadow-lg"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
@@ -1069,32 +1058,32 @@ export default function Home() {
                         {Array.from({ length: 5 }, (_, i) => (
                           <Star
                             key={i}
-                            size={13}
+                            size={14}
                             fill="currentColor"
                             strokeWidth={1}
                           />
                         ))}
                       </div>
-                      <span className="text-[10px] text-ink-soft">
+                      <span className="text-[10px] text-neutral-500 font-semibold">
                         {review.date}
                       </span>
                     </div>
 
-                    <p className="mt-4 text-xs font-bold text-brand-800">
+                    <p className="mt-4 text-xs font-bold text-[#785414]">
                       &ldquo;{review.highlight}&rdquo;
                     </p>
 
-                    <p className="mt-2.5 text-[13px] leading-6 text-ink-soft italic">
+                    <p className="mt-2.5 text-[13px] leading-6 text-[#61574e] italic">
                       &ldquo;{review.content}&rdquo;
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-ink/10 pt-4">
-                    <p className="font-serif text-base font-semibold text-ink">
+                  <div className="mt-6 border-t border-neutral-200 pt-4">
+                    <p className="font-serif text-base font-bold text-[#16120e]">
                       {review.name}
                     </p>
-                    <p className="text-[10px] uppercase tracking-wider text-ink-soft">
-                      {review.reviewsCount} no Google
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-neutral-500">
+                      {review.badge} · {review.reviewsCount} no Google
                     </p>
                   </div>
                 </div>
@@ -1102,11 +1091,11 @@ export default function Home() {
             </div>
 
             {/* Second row of reviews */}
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {clientReviews.slice(4, 8).map((review) => (
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {clientReviews.slice(6, 12).map((review) => (
                 <div
                   key={review.name}
-                  className="flex flex-col justify-between border border-ink/10 bg-ivory/60 p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-card"
+                  className="flex flex-col justify-between rounded-md border border-neutral-200 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-brand-700/40 hover:shadow-lg"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2">
@@ -1114,32 +1103,32 @@ export default function Home() {
                         {Array.from({ length: 5 }, (_, i) => (
                           <Star
                             key={i}
-                            size={13}
+                            size={14}
                             fill="currentColor"
                             strokeWidth={1}
                           />
                         ))}
                       </div>
-                      <span className="text-[10px] text-ink-soft">
+                      <span className="text-[10px] text-neutral-500 font-semibold">
                         {review.date}
                       </span>
                     </div>
 
-                    <p className="mt-4 text-xs font-bold text-brand-800">
+                    <p className="mt-4 text-xs font-bold text-[#785414]">
                       &ldquo;{review.highlight}&rdquo;
                     </p>
 
-                    <p className="mt-2.5 text-[13px] leading-6 text-ink-soft italic">
+                    <p className="mt-2.5 text-[13px] leading-6 text-[#61574e] italic">
                       &ldquo;{review.content}&rdquo;
                     </p>
                   </div>
 
-                  <div className="mt-6 border-t border-ink/10 pt-4">
-                    <p className="font-serif text-base font-semibold text-ink">
+                  <div className="mt-6 border-t border-neutral-200 pt-4">
+                    <p className="font-serif text-base font-bold text-[#16120e]">
                       {review.name}
                     </p>
-                    <p className="text-[10px] uppercase tracking-wider text-ink-soft">
-                      {review.reviewsCount} no Google
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-neutral-500">
+                      {review.badge} · {review.reviewsCount} no Google
                     </p>
                   </div>
                 </div>
@@ -1148,19 +1137,20 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Contato & Localização */}
+        {/* DOBRA 6: CONTATO & SEDE FÍSICA (MODO ESCURO - MATEUS LEME) */}
         <section
           id="contato"
-          className="scroll-mt-24 bg-ivory py-20 sm:py-28 lg:py-32"
+          className="scroll-mt-24 border-t border-brand-700/25 bg-[#090705] py-20 sm:py-28 lg:py-32"
         >
           <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 lg:px-12">
             <div>
               <Heading
                 eyebrow="CONTATO & LOCALIZAÇÃO"
-                description="Agende sua consulta presencial no coração de Itajubá ou realize seu atendimento de forma totalmente on-line com total segurança."
+                light
+                description="Agende sua consulta presencial em nosso escritório no Centro de Mateus Leme ou solicite atendimento on-line com total segurança."
               >
                 Estamos prontos para{" "}
-                <span className="italic text-brand-700">ouvir sua história.</span>
+                <span className="text-brand-300">ouvir sua história.</span>
               </Heading>
 
               <div className="mt-9 flex flex-col items-start gap-4">
@@ -1168,35 +1158,46 @@ export default function Home() {
                   href={getWhatsAppUrl()}
                   target="_blank"
                   size="lg"
-                  className="rounded-full shadow-md"
+                  className="shadow-xl"
                 >
                   <WhatsAppIcon size={17} /> Iniciar conversa no WhatsApp
                 </GlowingButton>
-                <p className="text-[11px] leading-5 text-ink-soft">
+                <p className="text-[11px] leading-5 text-neutral-400 font-medium">
                   Atendimento direto e retorno com prontidão:{" "}
-                  <strong className="text-ink">{PHONE_DISPLAY}</strong>.
+                  <strong className="text-white">{PHONE_DISPLAY}</strong>.
                 </p>
               </div>
 
-              <div className="mt-10 space-y-4 text-xs text-ink-soft">
+              <div className="mt-10 space-y-4 text-xs text-neutral-300">
                 <div className="flex items-center gap-3">
-                  <Clock size={16} className="text-brand-700" />
-                  <span>Segunda a Sexta: 09h às 18h (sob agendamento)</span>
+                  <Clock size={17} className="text-brand-400 shrink-0" />
+                  <span>Segunda a Sexta a partir das 09:00 (sob agendamento)</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone size={16} className="text-brand-700" />
+                  <Phone size={17} className="text-brand-400 shrink-0" />
                   <a
                     href={`tel:+${WHATSAPP_NUMBER}`}
-                    className="hover:text-brand-700 transition-colors"
+                    className="hover:text-brand-300 transition-colors"
                   >
                     {PHONE_DISPLAY}
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail size={16} className="text-brand-700" />
+                  <InstagramIcon size={17} className="text-brand-400 shrink-0" />
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-brand-300 transition-colors"
+                  >
+                    {INSTAGRAM_HANDLE}
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail size={17} className="text-brand-400 shrink-0" />
                   <a
                     href={`mailto:${EMAIL_CONTACT}`}
-                    className="hover:text-brand-700 transition-colors"
+                    className="hover:text-brand-300 transition-colors"
                   >
                     {EMAIL_CONTACT}
                   </a>
@@ -1205,44 +1206,44 @@ export default function Home() {
             </div>
 
             {/* Address & Office Card */}
-            <div className="relative overflow-hidden border border-ink/10 bg-white p-7 sm:p-10 shadow-card">
-              <div className="absolute right-0 top-0 h-1.5 w-32 bg-brand-700" />
+            <div className="relative overflow-hidden rounded-md border border-brand-700/40 bg-[#120e09] p-7 sm:p-10 shadow-2xl">
+              <div className="absolute right-0 top-0 h-1.5 w-36 bg-gradient-to-r from-brand-500 to-brand-300" />
 
               <div className="flex items-center gap-4">
-                <span className="grid size-12 place-items-center rounded-full bg-brand-50 text-brand-700">
-                  <MapPin size={22} strokeWidth={1.6} />
+                <span className="grid size-12 place-items-center rounded-md border border-brand-700/40 bg-[#1a140d] text-brand-300">
+                  <MapPin size={24} strokeWidth={1.8} />
                 </span>
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-700">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-400">
                     Sede do Escritório
                   </p>
-                  <p className="mt-1 font-serif text-2xl text-ink">
-                    Itajubá · Minas Gerais
+                  <p className="mt-1 font-serif text-2xl font-bold text-white">
+                    Mateus Leme · Minas Gerais
                   </p>
                 </div>
               </div>
 
-              <address className="mt-7 max-w-md not-italic text-[14px] leading-7 text-ink-soft">
-                <strong className="text-ink font-semibold">
-                  Edifício Santa Clara
+              <address className="mt-7 max-w-md not-italic text-[14px] leading-7 text-neutral-300 font-medium">
+                <strong className="text-white font-bold">
+                  Jean César Advogado & Associados
                 </strong>
                 <br />
-                Rua Cel. Francisco Braz, 185 - Sala 205
+                R. Pereira Guimarães, 180 - 1° ANDAR
                 <br />
-                Centro, Itajubá - MG, CEP 37500-005, Brasil
+                Centro, Mateus Leme - MG, CEP 35670-000, Brasil
               </address>
 
-              <div className="my-7 h-px bg-ink/10" />
+              <div className="my-7 h-px bg-brand-700/20" />
 
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <p className="text-xs text-ink-soft">
+                <p className="text-xs text-neutral-400">
                   Atendimento presencial no Centro e on-line em todo o Brasil
                 </p>
                 <a
                   href={GOOGLE_MAPS_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-ink transition-colors hover:border-brand-700 hover:bg-brand-50 hover:text-brand-800"
+                  className="inline-flex items-center gap-2 rounded-md border border-brand-700/40 bg-[#1a140d] px-5 py-3 text-[10px] font-bold uppercase tracking-[0.14em] text-brand-200 transition-colors hover:border-brand-400 hover:bg-brand-900/60 hover:text-white"
                 >
                   Abrir no Google Maps <ArrowUpRight size={14} />
                 </a>
@@ -1251,50 +1252,50 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pre-Footer CTA Strip */}
-        <section className="bg-brand-700 px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12 shadow-inner">
+        {/* DOBRA 7: FAIXA PRÉ-FOOTER (FAIXA DE OURO METÁLICO) */}
+        <section className="bg-gradient-to-r from-[#9b7020] via-[#c59b3f] to-[#785414] px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12 shadow-inner">
           <div className="mx-auto flex max-w-7xl flex-col justify-between gap-7 sm:flex-row sm:items-center">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-200">
-                IZABELLA RENNÓ ADVOCACIA · OAB/MG 201.285
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#0a0805]">
+                JEAN CÉSAR ADVOGADO & ASSOCIADOS · OAB/MG 213.482
               </p>
-              <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl text-white">
-                Pronto para defender seus direitos com quem realmente se dedica
-                à sua causa?
+              <h2 className="mt-3 max-w-2xl font-serif text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-4xl drop-shadow-sm">
+                Pronto para proteger seus direitos e seu patrimônio com quem é
+                referência jurídica?
               </h2>
             </div>
             <a
               href={getWhatsAppUrl(
-                "Olá, Dra. Izabella. Gostaria de agendar uma consulta inicial para avaliar meu caso."
+                "Olá, Dr. Jean César. Gostaria de agendar uma consulta inicial para avaliar meu caso."
               )}
               target="_blank"
               rel="noreferrer"
-              className="group inline-flex w-fit shrink-0 items-center gap-3 rounded-full bg-white px-7 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-brand-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-brand-50 hover:shadow-lg"
+              className="group inline-flex w-fit shrink-0 items-center gap-3 rounded-md bg-[#0a0805] px-7 py-4 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-xl transition-all hover:-translate-y-0.5 hover:bg-[#16120e] hover:shadow-2xl"
             >
               <WhatsAppIcon size={17} /> Falar no WhatsApp <ArrowUpRight size={15} />
             </a>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-brand-950 px-5 py-14 text-white sm:px-8 lg:px-12">
-          <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_1fr]">
+        {/* FOOTER (MODO ESCURO - OBSIDIAN & +30% LOGO) */}
+        <footer className="bg-[#050403] px-5 py-16 text-white sm:px-8 lg:px-12 border-t border-brand-700/20">
+          <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_1fr]">
             <div>
-              <div className="inline-flex rounded-sm bg-white/95 p-3.5 shadow-md">
+              <div className="inline-flex rounded-md bg-[#0a0805] p-3 border border-brand-700/30 shadow-md">
                 <Image
                   src="/logo.png"
-                  width={450}
-                  height={154}
-                  alt="Izabella Rennó Advocacia"
-                  className="h-16 w-auto object-contain"
+                  width={1024}
+                  height={341}
+                  alt="Jean César Advogado & Associados"
+                  className="h-16 w-auto object-contain sm:h-20 lg:h-[86px]"
                 />
               </div>
-              <p className="mt-5 max-w-xs text-xs leading-6 text-white/65">
-                Advocacia estratégica, rigor técnico e dedicação exclusiva. Sede
-                no Centro de Itajubá - MG e atendimento digital em todo o Brasil.
+              <p className="mt-5 max-w-xs text-xs leading-6 text-neutral-400">
+                Advocacia estratégica, rigor técnico e excelência. Sede no Centro
+                de Mateus Leme - MG e atendimento digital em todo o Brasil.
               </p>
-              <p className="mt-3 text-[11px] font-semibold text-brand-300">
-                Inscrição OAB/MG 201.285
+              <p className="mt-3 text-[11px] font-bold text-brand-400">
+                Inscrição OAB/MG 213.482 · Presidência Direito Imobiliário
               </p>
             </div>
 
@@ -1302,24 +1303,24 @@ export default function Home() {
               <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-300">
                 Navegação
               </h2>
-              <div className="mt-4 flex flex-col items-start gap-3 text-xs text-white/70">
+              <div className="mt-4 flex flex-col items-start gap-3 text-xs text-neutral-300">
                 <a className="footer-link" href="#inicio">
                   Início
                 </a>
                 <a className="footer-link" href="#sobre">
-                  A Advogada & Credenciais
+                  O Advogado & Credenciais
                 </a>
                 <a className="footer-link" href="#atuacao">
                   Áreas de Atuação
                 </a>
-                <a className="footer-link" href="#artigos">
-                  Conteúdos Jurídicos
+                <a className="footer-link" href="#diferenciais">
+                  Compromisso Profissional
                 </a>
                 <a className="footer-link" href="#avaliacoes">
                   Avaliações no Google
                 </a>
                 <a className="footer-link" href="#contato">
-                  Contato & Localização
+                  Contato & Sede
                 </a>
               </div>
             </div>
@@ -1328,7 +1329,7 @@ export default function Home() {
               <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-300">
                 Contato Direto
               </h2>
-              <div className="mt-4 flex flex-col items-start gap-3 text-xs text-white/70">
+              <div className="mt-4 flex flex-col items-start gap-3 text-xs text-neutral-300">
                 <a
                   href={getWhatsAppUrl()}
                   target="_blank"
@@ -1336,6 +1337,14 @@ export default function Home() {
                   className="footer-link inline-flex items-center gap-2"
                 >
                   <WhatsAppIcon size={15} /> WhatsApp: {PHONE_DISPLAY}
+                </a>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-link inline-flex items-center gap-2"
+                >
+                  <InstagramIcon size={15} className="shrink-0" /> {INSTAGRAM_HANDLE}
                 </a>
                 <a
                   href={`mailto:${EMAIL_CONTACT}`}
@@ -1350,15 +1359,17 @@ export default function Home() {
                   className="footer-link inline-flex items-start gap-2"
                 >
                   <MapPin size={15} className="mt-0.5 shrink-0" />
-                  <span>Ed. Santa Clara · R. Cel. Francisco Braz, 185 - Sl 205, Itajubá - MG</span>
+                  <span>
+                    R. Pereira Guimarães, 180 - 1° ANDAR - Centro, Mateus Leme - MG
+                  </span>
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-3 border-t border-white/15 pt-6 text-[10px] text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-3 border-t border-white/10 pt-6 text-[10px] text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
             <p>
-              © {new Date().getFullYear()} Dra. Izabella Rennó Del-Ducca de Souza (OAB/MG 201.285). Todos os direitos reservados.
+              © {new Date().getFullYear()} Jean César Advogado & Associados (OAB/MG 213.482). Todos os direitos reservados.
             </p>
             <p>
               Conteúdo meramente informativo, em estrita conformidade com o Código de Ética e Disciplina da OAB.
@@ -1366,11 +1377,11 @@ export default function Home() {
           </div>
         </footer>
 
-        {/* Modal de Detalhes da Área de Atuação */}
+        {/* Modal de Detalhes da Área de Atuação - Dark Mode Executive */}
         <AnimatePresence>
           {activeArea && (
             <motion.div
-              className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+              className="fixed inset-0 z-50 flex items-end justify-center bg-black/80 p-0 backdrop-blur-md sm:items-center sm:p-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -1385,41 +1396,41 @@ export default function Home() {
                 exit={{ opacity: 0, y: 16, scale: 0.99 }}
                 transition={{ duration: 0.24 }}
                 onClick={(event) => event.stopPropagation()}
-                className="relative max-h-[90vh] w-full overflow-y-auto rounded-t-2xl border border-ink/10 bg-ivory p-7 shadow-2xl sm:max-w-xl sm:rounded-sm sm:p-10"
+                className="relative max-h-[90vh] w-full overflow-y-auto rounded-t-lg border border-brand-500/40 bg-[#120e09] p-7 text-white shadow-2xl sm:max-w-xl sm:rounded-md sm:p-10"
               >
                 <button
                   type="button"
                   aria-label="Fechar detalhes da área"
                   onClick={() => setActiveArea(null)}
-                  className="absolute right-5 top-5 grid size-10 place-items-center rounded-full border border-ink/15 text-ink transition-colors hover:border-brand-700 hover:text-brand-700"
+                  className="absolute right-5 top-5 grid size-10 place-items-center rounded-md border border-brand-700/40 text-neutral-300 transition-colors hover:border-brand-400 hover:text-brand-300"
                 >
                   <X size={18} />
                 </button>
 
-                <p className="eyebrow">ÁREA DE ATUAÇÃO ESTRATÉGICA</p>
+                <p className="eyebrow-light text-brand-300">ÁREA DE ATUAÇÃO ESTRATÉGICA</p>
 
                 <h2
                   id="area-dialog-title"
-                  className="mt-4 max-w-sm pr-10 font-serif text-3xl leading-tight text-ink sm:text-4xl"
+                  className="mt-4 max-w-sm pr-10 font-serif text-2xl font-bold leading-tight text-white sm:text-3xl"
                 >
                   {activeArea.title}
                 </h2>
 
-                <p className="mt-5 text-sm leading-7 text-ink-soft">
+                <p className="mt-5 text-sm leading-7 text-neutral-300">
                   {activeArea.details}
                 </p>
 
-                <div className="mt-6 border-t border-ink/10 pt-5">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-800">
+                <div className="mt-6 border-t border-brand-700/25 pt-5">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-300">
                     Principais temas e demandas atendidas:
                   </p>
                   <ul className="mt-4 space-y-3">
                     {activeArea.topics.map((topic) => (
                       <li
                         key={topic}
-                        className="flex items-center gap-3 text-sm text-ink"
+                        className="flex items-center gap-3 text-sm text-neutral-200"
                       >
-                        <span className="size-2 rounded-full bg-brand-700 shrink-0" />
+                        <span className="size-2 rounded-full bg-brand-400 shrink-0" />
                         <span>{topic}</span>
                       </li>
                     ))}
@@ -1431,14 +1442,14 @@ export default function Home() {
                     href={getWhatsAppUrl(activeArea.whatsAppText)}
                     target="_blank"
                     size="md"
-                    className="rounded-full shadow-md"
+                    className="shadow-xl"
                   >
                     <WhatsAppIcon size={16} /> Consultar sobre esta área
                   </GlowingButton>
                   <button
                     type="button"
                     onClick={() => setActiveArea(null)}
-                    className="px-5 py-3 text-xs font-semibold text-ink-soft hover:text-ink transition-colors"
+                    className="px-5 py-3 text-xs font-semibold text-neutral-400 hover:text-white transition-colors"
                   >
                     Fechar
                   </button>
