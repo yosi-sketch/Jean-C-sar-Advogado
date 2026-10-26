@@ -634,7 +634,7 @@ export default function Home() {
               </div>
 
               {/* Floating badges */}
-              <div className="absolute -left-4 top-[12%] rounded-md border border-brand-500/40 bg-[#14100b] px-4 py-2.5 text-[10px] font-bold tracking-[0.14em] text-brand-300 shadow-2xl sm:-left-8 sm:px-5">
+              <div className="absolute -left-4 -top-4 rounded-md border border-brand-500/40 bg-[#14100b] px-4 py-2.5 text-[10px] font-bold tracking-[0.14em] text-brand-300 shadow-2xl sm:-left-8 sm:px-5">
                 DEFESA PATRIMONIAL COMBATIVA
               </div>
 
